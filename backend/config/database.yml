@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV["DATABASE_URL"] %>
+
+development:
+  <<: *default
+  database: meal_planner_dev
+
+test:
+  <<: *default
+  database: meal_planner_test
+
+production:
+  <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
